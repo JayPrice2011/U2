@@ -1,0 +1,29 @@
+Get value(s):
+    - description: Gets all values stored in db
+    - url: /values
+    - class: GetValues
+    - POST: expects json formatted as:
+        {
+            "params": {},
+            "proc": "GetValues"
+        }
+
+Create value(s):
+    - description: creates either single or multiple new values
+    - url: /value/add
+    - class: CreateValue
+    - POST: expects json formatted as:
+        {
+            "params": [{
+                "abc": "...",
+                 "code": "...",
+                 "code_id": ...
+            }],
+            "proc": "AddUdcValue"
+        }
+
+// VERSION 0.0.1
+// 2020-10-11 [alek] added GetValues & CreateValues
+
+// VERSION 0.0.2
+// 2020-10-13 [alek] added jwt auth to appropiate methods

@@ -1,0 +1,35 @@
+Get master value(s):
+    - description: Gets all master values stored in db
+    - url: /master-values
+    - class: GetMasterValue
+    - POST: expects json formatted as:
+        {
+            "params": {},
+            "proc": "GetMasterValues"
+        }
+
+Update master value(s):
+    - description: adds or deletes master value
+    - url: /master-value/update
+    - class: UpdateMasterValues
+    - POST: expects json formatted as:
+        {
+            "params": {
+                "id":"..."
+            },
+            "proc": "RemoveMasterValue"
+        }
+
+        {
+            "params": {
+                "id":"..."
+            },
+            "proc": "AddMasterValue"
+        }
+
+
+// VERSION 0.0.1
+// 2020-10-11 [alek] added GetMasterValue & UpdateMasterValues
+
+// VERSION 0.0.2
+// 2020-10-13 [alek] added jwt auth to appropiate methods

@@ -1,0 +1,30 @@
+Get code(s):
+    - description: Gets all codes stored in db
+    - url: /codes
+    - class: GetCodes
+    - POST: expects json formatted as:
+        {
+            "params": {},
+            "proc": "GetCodes"
+        }
+
+Create code(s):
+    - description: creates either single or multiple new codes
+    - url: /code/add
+    - class: CreateCode
+    - POST: expects json formatted as:
+        {
+            "params": [{
+               "table_name":"...",
+               "code":"...",
+               "name":"...",
+               "required":...
+            }],
+            "proc": "AddUdcCode"
+        }
+
+// VERSION 0.0.1
+// 2020-10-11 [alek] added GetCodes & CreateCodes
+
+// VERSION 0.0.2
+// 2020-10-13 [alek] added jwt auth to appropiate methods

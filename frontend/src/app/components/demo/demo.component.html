@@ -1,0 +1,78 @@
+<div class="row justify-content-center mt-2">
+  <div class="col-4">
+    <div class="row" style="border:solid 1px black">
+      <div class="col-12" style="border-bottom:solid 1px black">
+        <h5>Codes</h5>
+      </div>
+      <div class="col-12 mt-3">
+        <table class="table table-bordered table-hover table-sm">
+          <thead>
+            <tr>
+              <th scope="col">Code</th>
+              <th scope="col">Name</th>
+              <th scope="col">Value(s)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let code of codes;" (click)="selectCode(code)" id="{{code.code}}" data-toggle="modal" data-target="#codeModal">
+              <td>{{code.code}}</td>
+              <td>{{code.name}}</td>
+              <td [innerHTML]="formatValueNames(code.values)"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="codeModal" tabindex="-1" role="dialog" aria-labelledby="codeModalLabel" aria-hidden="true" style="width:100%">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="codeModalLabel">{{selectedCode.name}} - {{selectedCode.code}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-5">
+            <h5>Add Value</h5>
+          </div>
+          <div class="col-1"></div>
+          <div class="col-5">
+            <h5>Remove Value</h5>
+          </div>
+          <div class="col-5">
+            <div class="containr-fluid">
+              <div class="row mt-1" *ngFor="let value of selectableValues">
+                <div class="col-1 align-items-center mt-2">
+                  <input class="form-control" type="checkbox" style="width:12px;height:12px" [(ngModel)]="value.add">
+                </div>
+                <div class="col-10 d-flex align-items-center">{{value.abv}} - {{value.name}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-1"> </div>
+          <div class="col-5">
+            <div class="containr-fluid">
+              <div class="row mt-1" *ngFor="let value of masterValues">
+                <div class="col-1 align-items-center mt-2">
+                  <input class="form-control" type="checkbox" style="width:12px;height:12px" [(ngModel)]="value.deleted">
+                </div>
+                <div class="col-10 d-flex align-items-center">{{value.abv}} - {{value.name}}</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeModal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="saveChanges()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

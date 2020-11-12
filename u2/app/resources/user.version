@@ -1,0 +1,46 @@
+Register user:
+    - description: Registers a new user
+    - url: /registration
+    - class: RegisterUser
+    - POST: expects json formatted as:
+        {
+            "params": {
+                "username":"...",
+                "password":"...",
+            },
+            "proc": "AddUser"
+        }
+
+Login a user:
+    - description: Logs in a user
+    - url: /login
+    - class: UserLogin
+    - POST: expects json formatted as:
+        {
+            "params": {
+                "username":"...",
+                "password":"...",
+            },
+            "proc": "VerifyLogin"
+        }
+
+Get all users:
+    - description: gets all users registered
+    - url: /users
+    - class: ListUsers
+    - Headers: requiers Authorization: Bearer {token}
+    - POST: expects json formatted as:
+        {
+            "params": { },
+            "proc": "ListUsers"
+        }
+
+Refresh Token:
+    - description: provides new token
+    - url: /token/refresh
+    - class: RefreshToken
+    - Headers: requiers Authorization: Bearer {refresh-token}
+
+
+// VERSION 0.0.1
+// 2020-10-11 [alek] added RegisterUser, UserLogin, ListUsers, RefreshToken

@@ -1,0 +1,17 @@
+<div class="container-fluid mt-2">
+  <div class="row">
+    <h5>Table of Contents</h5>
+  </div>
+  <div class="row mb-3" *ngFor="let t of tableOfContents">
+    <div class="col-12">
+      <h6><span [style.background-color]="t.color">&nbsp;{{t.type}}&nbsp;</span> {{t.name}} </h6>
+    </div>
+    <div class="col-12 ml-3">
+      {{t.description}}
+    </div>
+    <div class="col-12 ml-3">
+      {{t.requirements}}
+    </div>
+  </div>
+
+</div>
